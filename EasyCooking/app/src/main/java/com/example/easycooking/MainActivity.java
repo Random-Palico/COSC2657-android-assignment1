@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        // Display welcome message
         String userName = getIntent().getStringExtra("USER_NAME");
         if (userName != null && !userName.isEmpty()) {
             Toast toast = Toast.makeText(this, "Welcome " + userName, Toast.LENGTH_SHORT);
@@ -36,10 +35,10 @@ public class MainActivity extends AppCompatActivity {
             toast.show();
         }
 
-        // Hardcoded data
+        // data
         eggTartRecipe = new Recipe(
                 "Egg Tart",
-                R.drawable.egg_tart, 
+                R.drawable.egg_tart,
                 "1 hr 30 min",
                 "210 calories / serving",
                 "One of the most famous Chinese desserts is the classic egg tart, a delicious pastry consisting of a flaky outer shell with a creamy, but firm egg custard in the center. The origin of this traditional Chinese dessert is vague.",
