@@ -1,8 +1,14 @@
 package com.example.easycooking;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,8 +18,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.easycooking.model.Recipe;
+import com.example.easycooking.model_class.RecipeAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,12 +30,15 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
 
     private Recipe eggTartRecipe;
+    private EditText searchBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        searchBox = findViewById(R.id.search_box);
 
         String userName = getIntent().getStringExtra("USER_NAME");
         if (userName != null && !userName.isEmpty()) {
@@ -35,36 +47,24 @@ public class MainActivity extends AppCompatActivity {
             toast.show();
         }
 
-        // data
-        eggTartRecipe = new Recipe(
-                "Egg Tart",
-                R.drawable.egg_tart,
-                "1 hr 30 min",
-                "210 calories / serving",
-                "One of the most famous Chinese desserts is the classic egg tart, a delicious pastry consisting of a flaky outer shell with a creamy, but firm egg custard in the center. The origin of this traditional Chinese dessert is vague.",
-                Arrays.asList(
-                        "Custard Filling:",
-                        "4 eggs (reserve 2 tablespoons for pastry dough)",
-                        "180 mL hot water",
-                        "6 tablespoons (~75 g) sugar",
-                        "⅛ teaspoon salt",
-                        "60 mL evaporated milk",
-                        "A dash of vanilla extract (optional)",
-                        "",
-                        "Pastry Dough:",
-                        "200 g cake flour (plus extra for dusting)",
-                        "115 g unsalted butter (at room temperature)",
-                        "40 g powdered sugar",
-                        "2 tablespoons beaten egg (from the custard filling eggs)",
-                        "⅛ teaspoon salt",
-                        "A dash of vanilla extract (optional)"
-                ),
-                "For the pastry, in a large bowl, sift flour, sugar, and salt. Then add softened butter. Bring the mixture together with your hands, careful not to knead the pastry dough too much or you will make the pastry tough. \n Whisk the egg yolks and add the 2 tablespoons of beaten yolk to the flour mixture. Bring together until smooth. If the dough is too sticky, coating your hands with flour will help. Cover with plastic wrap and then refrigerate for 30 minutes, or until the dough is firm. \n To make the custard filling, melt sugar and salt with hot water. Mix until dissolved then let cool. \n Add the rest of the beaten egg yolk. Stir in sugar water and also evaporated milk (if adding vanilla, add now). Stir and combine everything well. \n Strain the filling to ensure no lumps. Chill in the refrigerator. \n Preheat the oven to 400˚F (200˚C). \n Take the dough out and divide into 16 equal portions. Spray the tart pan with a light coating of oil. Take one portion of your dough and roll it into a ball and place in your tart shell. Press the shell into the pan with your fingers. Try to make the wrapper uniform in thickness and avoid a thick bottom. Repeat to finish all. \n Pour the custard filling into the shells until it is about 80% full. Bake for 15 to 20 minutes until the surface becomes golden brown and a toothpick can stand in the egg tart. \n Cool down for several minutes and then take the egg tarts out of the pan. Serve while still warm."
-        );
+        // Load recipes from JSON
+        ArrayList<Recipe> recipes = loadRecipesFromJson();
 
-        displayTopRecipe(eggTartRecipe);
+        if (!recipes.isEmpty()) {
+            eggTartRecipe = recipes.get(0);
+            displayTopRecipe(eggTartRecipe);
+            findViewById(R.id.top_recipe_card).setOnClickListener(v -> openRecipeDetail(eggTartRecipe));
 
-        findViewById(R.id.top_recipe_card).setOnClickListener(v -> openRecipeDetail(eggTartRecipe));
+            recipes.remove(0);
+        } else {
+            Toast.makeText(this, "Failed to load recipe data", Toast.LENGTH_SHORT).show();
+        }
+
+        // Set up the recipe list cards under the For You title
+        RecyclerView recipeRecyclerView = findViewById(R.id.recipe_recycler_view);
+        recipeRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        RecipeAdapter recipeAdapter = new RecipeAdapter(this, recipes);
+        recipeRecyclerView.setAdapter(recipeAdapter);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -73,14 +73,66 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("DiscouragedApi")
+    private ArrayList<Recipe> loadRecipesFromJson() {
+        ArrayList<Recipe> recipes = new ArrayList<>();
+        String jsonString = loadJSONFromAsset("recipes.json");
+        try {
+            JSONArray jsonArray = new JSONArray(jsonString);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject recipeObject = jsonArray.getJSONObject(i);
+
+                Recipe recipe = new Recipe(
+                        recipeObject.getString("title"),
+                        getResources().getIdentifier(recipeObject.getString("imageResource"), "drawable", getPackageName()),
+                        recipeObject.getString("time"),
+                        recipeObject.getString("calories"),
+                        recipeObject.getString("about"),
+                        toList(recipeObject.getJSONArray("ingredients")),
+                        recipeObject.getString("recipeInstructions"),
+                        recipeObject.getString("rating")
+                );
+                recipes.add(recipe);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return recipes;
+    }
+
+    private String loadJSONFromAsset(String filename) {
+        String json = null;
+        try (InputStream is = getAssets().open(filename)) {
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            json = new String(buffer, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return json;
+    }
+
+    private ArrayList<String> toList(JSONArray jsonArray) throws JSONException {
+        ArrayList<String> list = new ArrayList<>();
+        for (int i = 0; i < jsonArray.length(); i++) {
+            list.add(jsonArray.getString(i));
+        }
+        return list;
+    }
+
     private void displayTopRecipe(Recipe recipe) {
         ImageView recipeImage = findViewById(R.id.top_recipe_image);
         TextView recipeTitle = findViewById(R.id.top_recipe_title);
-        TextView recipeDetails = findViewById(R.id.top_recipe_details);
+        TextView recipeTime = findViewById(R.id.top_recipe_time);
+        TextView recipeCalories = findViewById(R.id.top_recipe_calories);
+        TextView recipeRating = findViewById(R.id.top_recipe_rating);
 
         recipeImage.setImageResource(recipe.getImageResource());
         recipeTitle.setText(recipe.getTitle());
-        recipeDetails.setText(recipe.getTime() + " | " + recipe.getCalories());
+        recipeTime.setText(recipe.getTime());
+        recipeCalories.setText(recipe.getCalories());
+        recipeRating.setText(recipe.getRating());
     }
 
     private void openRecipeDetail(Recipe recipe) {
@@ -92,6 +144,34 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("about", recipe.getAbout());
         intent.putStringArrayListExtra("ingredients", new ArrayList<>(recipe.getIngredients()));
         intent.putExtra("recipeInstructions", recipe.getRecipeInstructions());
+        intent.putExtra("rating", recipe.getRating());
         startActivity(intent);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            View view = getCurrentFocus();
+            if (view instanceof EditText) {
+                int[] location = new int[2];
+                view.getLocationOnScreen(location);
+                float x = event.getRawX();
+                float y = event.getRawY();
+
+                if (x < location[0] || x > location[0] + view.getWidth() ||
+                        y < location[1] || y > location[1] + view.getHeight()) {
+                    hideKeyboard(view);
+                    view.clearFocus();
+                }
+            }
+        }
+        return super.dispatchTouchEvent(event);
+    }
+
+    private void hideKeyboard(View view) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm != null) {
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 }

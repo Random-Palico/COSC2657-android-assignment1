@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.897" />
 
-    <!-- hide the input and button -->
+    <!-- Hide the input and button -->
     <EditText
         android:id="@+id/nameInput"
         android:layout_width="0dp"
