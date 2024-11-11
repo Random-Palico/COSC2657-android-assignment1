@@ -7,15 +7,17 @@ public class Recipe {
     private int imageResource;
     private String time;
     private String calories;
+    private String rating;
     private String about;
     private List<String> ingredients;
     private String recipeInstructions;
 
-    public Recipe(String title, int imageResource, String time, String calories, String about, List<String> ingredients, String recipeInstructions) {
+    public Recipe(String title, int imageResource, String time, String calories, String about, List<String> ingredients, String recipeInstructions, String rating) {
         this.title = title;
         this.imageResource = imageResource;
         this.time = time;
         this.calories = calories;
+        this.rating = rating;
         this.about = about;
         this.ingredients = ingredients;
         this.recipeInstructions = recipeInstructions;
@@ -37,6 +39,10 @@ public class Recipe {
         return calories;
     }
 
+    public String getRating() {
+        return rating;
+    }
+
     public String getAbout() {
         return about;
     }
@@ -48,4 +54,5 @@ public class Recipe {
     public String getRecipeInstructions() {
         return recipeInstructions;
     }
+
 }

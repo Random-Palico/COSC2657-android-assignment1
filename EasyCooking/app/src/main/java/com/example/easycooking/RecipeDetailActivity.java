@@ -24,7 +24,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        // Retrieve data
+        // Retrieve data from intent
         String title = getIntent().getStringExtra("title");
         int imageResource = getIntent().getIntExtra("imageResource", 0);
         String time = getIntent().getStringExtra("time");
@@ -41,19 +41,34 @@ public class RecipeDetailActivity extends AppCompatActivity {
         TextView recipeIngredients = findViewById(R.id.recipe_ingredients);
         TextView recipeInstructionsView = findViewById(R.id.recipe_instructions);
 
+        String[] steps = recipeInstructions.split("\n");
+        StringBuilder numberedInstructions = new StringBuilder();
+        for (int i = 0; i < steps.length; i++) {
+            numberedInstructions.append(i + 1).append(". ").append(steps[i].trim()).append("\n\n");
+        }
+
+        recipeInstructionsView.setText(numberedInstructions.toString().trim());
+
         recipeImage.setImageResource(imageResource);
         recipeTitle.setText(title);
         recipeTime.setText(time);
         recipeCalories.setText(calories);
         recipeAbout.setText(about);
-        recipeIngredients.setText(String.join("\n", ingredients));
-        recipeInstructionsView.setText(recipeInstructions);
+        recipeIngredients.setText(formatIngredients(ingredients));
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    private String formatIngredients(ArrayList<String> ingredients) {
+        StringBuilder formattedIngredients = new StringBuilder();
+        for (String ingredient : ingredients) {
+            formattedIngredients.append("• ").append(ingredient).append("\n");
+        }
+        return formattedIngredients.toString().trim();
     }
 
     @Override
