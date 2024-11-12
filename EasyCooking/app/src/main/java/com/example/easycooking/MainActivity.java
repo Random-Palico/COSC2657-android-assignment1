@@ -4,24 +4,22 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.easycooking.model.Recipe;
-import com.example.easycooking.model_class.RecipeAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,62 +29,144 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Recipe eggTartRecipe;
+    private Recipe eggTartRecipe; // declare recipe the recipe as unique
     private EditText searchBox;
+    private List<Recipe> allRecipes = new ArrayList<>();
+    private List<Recipe> filteredRecipes = new ArrayList<>();
+    private TextView topRecipeTitleLabel;
+    private View topRecipeCard;
+    private TextView forYouTitle;
+    private LinearLayout recipeListContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        searchBox = findViewById(R.id.search_box);
+        initUI();
 
+        displayWelcomeMessage();
+
+        // Load recipes from JSON file
+        allRecipes = loadRecipesFromJson();
+
+        if (!allRecipes.isEmpty()) {
+            setupTopRecipe();
+            displayRecipes(filteredRecipes);
+        } else {
+            Toast.makeText(this, "Failed to load recipe data", Toast.LENGTH_SHORT).show();
+        }
+
+        setupSearchFunctionality();
+    }
+
+    private void initUI() {
+        searchBox = findViewById(R.id.search_box);
+        topRecipeTitleLabel = findViewById(R.id.top_recipe_title_label);
+        topRecipeCard = findViewById(R.id.top_recipe_card);
+        forYouTitle = findViewById(R.id.for_you_title);
+        recipeListContainer = findViewById(R.id.recipe_card_horizontal);
+    }
+
+    private void displayWelcomeMessage() {
         String userName = getIntent().getStringExtra("USER_NAME");
         if (userName != null && !userName.isEmpty()) {
             Toast toast = Toast.makeText(this, "Welcome " + userName, Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 100);
             toast.show();
         }
+    }
 
-        // Load recipes from JSON
-        ArrayList<Recipe> recipes = loadRecipesFromJson();
+    private void setupTopRecipe() {
+        eggTartRecipe = allRecipes.get(0); // Set first recipe as top recipe
+        filteredRecipes.addAll(allRecipes);
+        filteredRecipes.remove(0); // Remove top recipe from main list
 
-        if (!recipes.isEmpty()) {
-            eggTartRecipe = recipes.get(0);
-            displayTopRecipe(eggTartRecipe);
-            findViewById(R.id.top_recipe_card).setOnClickListener(v -> openRecipeDetail(eggTartRecipe));
+        displayTopRecipe(eggTartRecipe);
+        topRecipeCard.setOnClickListener(v -> openRecipeDetail(eggTartRecipe));
+    }
 
-            recipes.remove(0);
-        } else {
-            Toast.makeText(this, "Failed to load recipe data", Toast.LENGTH_SHORT).show();
-        }
+    private void setupSearchFunctionality() {
+        searchBox.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
-        // Set up the recipe list cards under the For You title
-        RecyclerView recipeRecyclerView = findViewById(R.id.recipe_recycler_view);
-        recipeRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        RecipeAdapter recipeAdapter = new RecipeAdapter(this, recipes);
-        recipeRecyclerView.setAdapter(recipeAdapter);
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filterRecipes(s.toString());
+            }
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
         });
     }
 
-    @SuppressLint("DiscouragedApi")
+    private void filterRecipes(String query) {
+        filteredRecipes.clear();
+
+        if (query.isEmpty()) {
+            filteredRecipes.addAll(allRecipes);
+            filteredRecipes.remove(eggTartRecipe);
+
+            topRecipeTitleLabel.setVisibility(View.VISIBLE);
+            topRecipeCard.setVisibility(View.VISIBLE);
+            forYouTitle.setVisibility(View.VISIBLE);
+        } else {
+            for (Recipe recipe : allRecipes) {
+                if (recipe.getTitle().toLowerCase().contains(query.toLowerCase())) {
+                    filteredRecipes.add(recipe);
+                }
+            }
+
+            topRecipeTitleLabel.setVisibility(View.GONE);
+            topRecipeCard.setVisibility(View.GONE);
+            forYouTitle.setVisibility(View.GONE);
+        }
+
+        displayRecipes(filteredRecipes);
+    }
+
+    private void displayRecipes(List<Recipe> recipes) {
+        recipeListContainer.removeAllViews();
+        LayoutInflater inflater = LayoutInflater.from(this);
+
+        for (Recipe recipe : recipes) {
+            View recipeCard = inflater.inflate(R.layout.recipe_card_horizontal, recipeListContainer, false);
+
+            ImageView recipeImage = recipeCard.findViewById(R.id.recipe_image);
+            TextView recipeTitle = recipeCard.findViewById(R.id.recipe_title);
+            TextView recipeTime = recipeCard.findViewById(R.id.recipe_time);
+            TextView recipeCalories = recipeCard.findViewById(R.id.recipe_calories);
+            TextView recipeRating = recipeCard.findViewById(R.id.recipe_rating);
+
+            recipeImage.setImageResource(recipe.getImageResource());
+            recipeTitle.setText(recipe.getTitle());
+            recipeTime.setText(recipe.getTime());
+            recipeCalories.setText(recipe.getCalories());
+            recipeRating.setText(recipe.getRating());
+
+            recipeCard.setOnClickListener(v -> openRecipeDetail(recipe));
+
+            recipeListContainer.addView(recipeCard);
+        }
+    }
+
     private ArrayList<Recipe> loadRecipesFromJson() {
         ArrayList<Recipe> recipes = new ArrayList<>();
         String jsonString = loadJSONFromAsset("recipes.json");
+
         try {
             JSONArray jsonArray = new JSONArray(jsonString);
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject recipeObject = jsonArray.getJSONObject(i);
 
-                Recipe recipe = new Recipe(
+                @SuppressLint("DiscouragedApi") Recipe recipe = new Recipe(
                         recipeObject.getString("title"),
                         getResources().getIdentifier(recipeObject.getString("imageResource"), "drawable", getPackageName()),
                         recipeObject.getString("time"),
@@ -101,6 +181,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
         return recipes;
     }
 
@@ -157,19 +238,23 @@ public class MainActivity extends AppCompatActivity {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             View view = getCurrentFocus();
             if (view instanceof EditText) {
-                int[] location = new int[2];
-                view.getLocationOnScreen(location);
-                float x = event.getRawX();
-                float y = event.getRawY();
-
-                if (x < location[0] || x > location[0] + view.getWidth() ||
-                        y < location[1] || y > location[1] + view.getHeight()) {
-                    hideKeyboard(view);
-                    view.clearFocus();
-                }
+                hideKeyboardOnTouchOutside(view, event);
             }
         }
         return super.dispatchTouchEvent(event);
+    }
+
+    private void hideKeyboardOnTouchOutside(View view, MotionEvent event) {
+        int[] location = new int[2];
+        view.getLocationOnScreen(location);
+        float x = event.getRawX();
+        float y = event.getRawY();
+
+        if (x < location[0] || x > location[0] + view.getWidth() ||
+                y < location[1] || y > location[1] + view.getHeight()) {
+            hideKeyboard(view);
+            view.clearFocus();
+        }
     }
 
     private void hideKeyboard(View view) {
