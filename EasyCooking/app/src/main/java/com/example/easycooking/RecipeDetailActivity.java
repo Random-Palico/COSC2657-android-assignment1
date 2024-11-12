@@ -1,7 +1,12 @@
 package com.example.easycooking;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -61,7 +66,36 @@ public class RecipeDetailActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        LinearLayout moreLinksLayout = findViewById(R.id.more_links);
+        addLinkButton(moreLinksLayout, "Tasty", "https://tasty.co/tag/desserts");
+        addLinkButton(moreLinksLayout, "All Recipes", "https://www.allrecipes.com/recipes/79/desserts/");
+        addLinkButton(moreLinksLayout, "Taste.com.au", "https://www.taste.com.au/baking/galleries/top-50-desserts/rysx9rys?page=3");
+        addLinkButton(moreLinksLayout, "BBC Good Food", "https://www.bbcgoodfood.com/recipes/collection/dessert-recipes");
+        addLinkButton(moreLinksLayout, "NY Times Cooking", "https://cooking.nytimes.com/topics/desserts");
     }
+
+    private void addLinkButton(LinearLayout layout, String name, String url) {
+        TextView linkButton = new TextView(this);
+        linkButton.setText(name);
+        linkButton.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
+        linkButton.setTextSize(16);
+        linkButton.setPadding(0, 16, 0, 16);
+        linkButton.setGravity(View.TEXT_ALIGNMENT_CENTER);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.gravity = Gravity.CENTER_HORIZONTAL;
+        linkButton.setLayoutParams(params);
+
+        linkButton.setOnClickListener(v -> {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(browserIntent);
+        });
+        layout.addView(linkButton);
+    }
+
 
     private String formatIngredients(ArrayList<String> ingredients) {
         StringBuilder formattedIngredients = new StringBuilder();

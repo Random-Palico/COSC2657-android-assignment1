@@ -92,6 +92,107 @@
       "1 ½ teaspoons vanilla extract"
     ],
     "recipeInstructions": "Pour milk into a small bowl. Sprinkle gelatin powder over milk and stir until combined. Set aside. \n In a saucepan, stir together heavy cream and sugar. Set over medium heat and bring to a boil, watching carefully as the cream can quickly bubble up. \n Immediately stir in the gelatin mixture, stirring until completely dissolved. Cook and stir for 1 minute. \n Remove the pan from heat and stir in vanilla extract. \n Pour the cream mixture into 6 individual ramekins. Leave to cool, uncovered, for about 20 minutes until no longer warm. \n Once cool, cover with plastic wrap and refrigerate until set, at least 4 hours or preferably overnight."
+  },
+  {
+    "title": "Homemade Brownies",
+    "imageResource": "brownie",
+    "time": "1 hour",
+    "calories": "250 calories / serving (estimate)",
+    "rating": "5 / 5",
+    "about": "These homemade brownies are rich, fudgy, and have a gooey texture reminiscent of a boxed mix but with all-natural ingredients. This recipe uses powdered sugar for a chewy consistency and a touch of cornstarch to thicken the batter.",
+    "ingredients": [
+      "2 large eggs",
+      "2 tablespoons water",
+      "1 cup granulated sugar",
+      "1/2 cup powdered sugar",
+      "3/4 cup all-purpose flour",
+      "1/2 cup unsweetened cocoa powder (preferably Dutch-processed)",
+      "1/2 cup chocolate chips",
+      "1/2 cup canola oil (or olive oil for richer flavor)",
+      "1/2 teaspoon salt",
+      "1/2 teaspoon vanilla extract"
+    ],
+    "recipeInstructions": "Preheat the oven to 325°F. Line an 8x8 inch baking pan with parchment paper. \nIn a medium bowl, mix together granulated sugar, powdered sugar, flour, cocoa powder, chocolate chips, and salt. \nIn a separate large bowl, whisk together eggs, oil, water, and vanilla extract until smooth. \nGradually add the dry ingredients to the wet ingredients, folding just until combined. The batter will be thick. \nPour the batter into the prepared pan, using a spatula to spread it evenly. \nBake for 40-45 minutes, or until a toothpick inserted in the center comes out with a few moist crumbs. \nAllow brownies to cool completely before slicing and serving. \nStore leftovers in an airtight container at room temperature for up to 3 days or freeze for up to 1 month."
+  },
+  {
+    "title": "French Macarons",
+    "imageResource": "macarons",
+    "time": "2 hours",
+    "calories": "80 calories / macaron",
+    "rating": "4.5 / 5",
+    "about": "This easy French macaron recipe makes a batch of the most dainty, delicate, and delicious cookies. Follow these steps for a treat to impress friends and family!",
+    "ingredients": [
+      "100g egg whites, aged",
+      "200g powdered sugar",
+      "120g almond flour",
+      "50g granulated sugar",
+      "1/4 tsp cream of tartar",
+      "Pinch of salt",
+      "1/2 tsp vanilla extract",
+      "Gel food coloring (optional)",
+      "Buttercream or ganache for filling"
+    ],
+    "recipeInstructions": "Sieve the icing sugar and ground almonds together in a large bowl and whisk together.\nWhiz the dry ingredients in the food processor and then sieve again. Repeat this process two more times for a smooth top.\nWhip the egg whites with the cream of tartar. Add salt and gradually add the sugar. Mix until the meringue reaches the soft peak stage.\nAdd vanilla and any gel food coloring at this point.\nWhip the meringue to stiff peaks, ideally finishing the whisking by hand for better control.\nAdd a third of the confectioner’s sugar and almond mixture to the meringue and fold in gently using circular motions.\nAdd the remaining dry mixture and continue folding until the batter reaches a lava-like consistency.\nTransfer the batter to a pastry bag fitted with a round tip. Pipe onto a sheet of parchment paper fixed to a cookie sheet.\nTap the tray several times to remove air bubbles. Let the macaron shells sit for 40-60 minutes to form a skin.\nPreheat oven to 300°F (150°C). Bake for 12-15 minutes, until the shells are set and do not wobble.\nCool for 10 minutes on the pan, then transfer to a wire rack to cool completely.\nPipe filling onto the back of half the shells and form a sandwich. Enjoy your French macarons!"
+  },
+  {
+    "title": "Vanilla Ice Cream",
+    "imageResource": "vanilla_ice_cream",
+    "time": "6-8 hours",
+    "calories": "250 calories / serving (estimate)",
+    "rating": "4.8 / 5",
+    "about": "This classic vanilla ice cream recipe creates a smooth, creamy dessert infused with real vanilla flavor. It can be made with or without an ice cream machine.",
+    "ingredients": [
+      "284ml double cream",
+      "300ml full fat milk",
+      "115g golden caster sugar",
+      "1 vanilla pod",
+      "3 large free-range egg yolks",
+      "Ice cubes"
+    ],
+    "recipeInstructions": "Put the canister from the machine into the freezer a day before you want to make the ice cream.\nPour the cream and milk into a medium heavy-based pan, then add half of the sugar.\nSlit the vanilla pod down its length, scoop out the seeds, and add to the cream mixture. Cut the pod into three pieces and add to the pan.\nHeat the cream and milk over low heat, stirring occasionally until it almost boils. Remove from heat and let it infuse for 30 minutes.\nIn a bowl, beat the egg yolks with the remaining sugar for about 2 minutes until thickened and pale.\nUsing a measuring jug, scoop out 125ml of the cream mixture and beat into the egg yolks to slacken them. Reheat the cream until it just comes to a boil, then stir in the egg yolk mixture.\nReturn the pan to low heat, stirring constantly, for 8-10 minutes until the custard coats the back of a spoon. Avoid boiling.\nPour the custard into a heatproof bowl and place it in a larger bowl one-third full of iced water to cool for about 20 minutes, stirring occasionally. Cover and refrigerate for 3-4 hours, or preferably overnight.\nGet the ice cream machine running, remove the vanilla pod pieces, and slowly pour in the cold custard. Churn for 10-30 minutes until thickened.\nTransfer to a plastic container, cover with cling film, then a lid, and freeze for a minimum of 3 hours.\nTo make it by hand: In step 1, heat the milk, vanilla, and half of the sugar without the cream. At the start of step 6, whip the cream until light and fold into the cold custard. Freeze for 3-4 hours, stirring once an hour until almost frozen, then freeze as above."
+  },
+  {
+    "title": "Classic Cheesecake",
+    "imageResource": "cheesecake",
+    "time": "8 hours",
+    "calories": "400 calories / slice (estimate)",
+    "rating": "4.8 / 5",
+    "about": "This classic cheesecake recipe is creamy and smooth with a buttery graham cracker crust. Perfect for any occasion.",
+    "ingredients": [
+      "Graham Cracker Crust:",
+      "1 ½ cups graham cracker crumbs (170g)",
+      "2 Tablespoons sugar",
+      "1 Tablespoon brown sugar (or substitute white sugar)",
+      "7 Tablespoons melted butter",
+      "",
+      "Cheesecake:",
+      "32 oz cream cheese, softened to room temperature (910g)",
+      "1 cup sugar (200g)",
+      "⅔ cups sour cream (160g)",
+      "1 ½ teaspoons vanilla extract",
+      "⅛ teaspoon salt",
+      "4 large eggs, room temperature, lightly beaten"
+    ],
+    "recipeInstructions": "Preheat oven to 325°F (160°C).\nCombine graham cracker crumbs, sugar, and brown sugar, then stir well. Add melted butter and mix with a fork until well combined.\nPour crumbs into a 9” springform pan and press firmly into the bottom and up the sides. Set aside.\nIn a large bowl, add softened cream cheese and stir until smooth and creamy. Do not over-beat.\nAdd sugar and stir again until creamy.\nAdd sour cream, vanilla extract, and salt, and mix until well-combined, scraping the sides and bottom of the bowl to ensure all ingredients are incorporated.\nWith the mixer on low speed, gradually add lightly beaten eggs, one at a time, stirring just until each egg is incorporated. Scrape the sides and bottom of the bowl again.\nPour the cheesecake batter into the prepared springform pan. To prevent leaks, place the pan on a foil-lined cookie sheet.\nBake at 325°F (160°C) for 50-60 minutes, or until the edges are slightly puffed and just starting to turn a light golden brown. The center should spring back when touched but remain slightly jiggly.\nRemove from oven and let cool on top of the oven for 10 minutes. Then, use a knife to gently loosen the crust from the inside of the springform pan.\nAllow cheesecake to cool for another 1-2 hours until it reaches near room temperature. Transfer to the refrigerator and cool for at least 6 hours, or overnight.\nRemove the ring of the springform pan just before serving. Enjoy!"
+  },
+  {
+    "title": "Chocolate Mousse",
+    "imageResource": "chocolate_mousse",
+    "time": "6 hours",
+    "calories": "300 calories / serving (estimate)",
+    "rating": "4.9 / 5",
+    "about": "This chocolate mousse is rich, creamy, and delicately airy, a perfect dessert for chocolate lovers. Garnished with whipped cream and chocolate shavings, it's an indulgent treat.",
+    "ingredients": [
+      "3 eggs (~55g/2 oz each)",
+      "125g / 4.5 oz dark cooking chocolate, bittersweet / 70% cocoa",
+      "10g / 0.3 oz unsalted butter",
+      "1/2 cup full fat cream",
+      "3 tbsp caster sugar (superfine white sugar)",
+      "For decoration:",
+      "More whipped cream",
+      "Chocolate shavings",
+      "Optional: raspberries and mint sprig for garnish"
+    ],
+    "recipeInstructions": "Separate eggs and yolks while eggs are cold. Place whites in a large bowl and yolks in a small bowl.\nWhisk yolks until uniform.\nBreak chocolate into pieces and place in a microwave-safe bowl with butter. Melt in 30-second bursts, stirring between bursts, until smooth.\nBeat cream until stiff peaks form. Be careful not to over-whip.\nAdd sugar to egg whites. Beat whites until firm peaks form.\nFold egg yolks into cream using a rubber spatula, folding 8 times maximum.\nEnsure chocolate is still runny but warm. If needed, microwave in 5-second bursts until runny.\nPour chocolate into the cream-yolk mixture. Fold through in 8 folds.\nAdd 1/4 of the beaten egg whites into the chocolate mixture. Fold through until incorporated, aiming for 10 folds.\nPour chocolate mixture into the remaining egg whites. Fold until incorporated, with no white streaks remaining, aiming for 12 folds.\nDivide mixture into 4 small glasses or pots. Refrigerate for at least 6 hours or overnight.\nGarnish with whipped cream and chocolate shavings before serving. Optionally, add raspberries and a mint sprig for color."
   }
-
 ]

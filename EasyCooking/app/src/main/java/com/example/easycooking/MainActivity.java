@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     private void setupTopRecipe() {
         eggTartRecipe = allRecipes.get(0); // Set first recipe as top recipe
         filteredRecipes.addAll(allRecipes);
-        filteredRecipes.remove(0); // Remove top recipe from main list
+        filteredRecipes.remove(0); // Remove top recipe from main list (not displayed in For you list)
 
         displayTopRecipe(eggTartRecipe);
         topRecipeCard.setOnClickListener(v -> openRecipeDetail(eggTartRecipe));

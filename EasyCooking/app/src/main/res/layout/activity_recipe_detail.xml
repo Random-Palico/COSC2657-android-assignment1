@@ -10,7 +10,8 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <!-- Recipe image -->
         <androidx.cardview.widget.CardView
@@ -142,24 +143,24 @@
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
-            <!-- Complete button -->
             <TextView
-                android:id="@+id/completed_button"
+                android:id="@+id/check_out_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
-                android:background="@android:color/holo_orange_light"
-                android:backgroundTint="#FF8F75"
-                android:elevation="4dp"
-                android:gravity="center"
-                android:padding="12dp"
-                android:paddingStart="24dp"
-                android:paddingEnd="24dp"
-                android:text="Completed"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:text="Check out for more"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
                 android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/more_links"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"></LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
