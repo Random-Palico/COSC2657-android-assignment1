@@ -14,7 +14,7 @@
         android:orientation="horizontal"
         android:padding="8dp">
 
-        <!-- Recipe image -->
+        <!-- image -->
         <ImageView
             android:id="@+id/recipe_image"
             android:layout_width="100dp"
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
+                android:textSize="18dp"
                 android:textStyle="bold"
                 tools:text="Recipe Title" />
 
@@ -57,7 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/darker_gray"
-                    android:textSize="12sp"
+                    android:textSize="14dp"
                     tools:text="Time" />
             </LinearLayout>
 
@@ -78,7 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/darker_gray"
-                    android:textSize="12sp"
+                    android:textSize="14dp"
                     tools:text="Calories" />
             </LinearLayout>
 
@@ -99,7 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/darker_gray"
-                    android:textSize="12sp"
+                    android:textSize="14dp"
                     tools:text="Rating" />
             </LinearLayout>
         </LinearLayout>

@@ -10,58 +10,45 @@
 
     <ImageView
         android:id="@+id/name"
-        android:layout_width="359dp"
-        android:layout_height="153dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="18dp"
+        android:layout_width="352dp"
+        android:layout_height="194dp"
+        android:layout_marginTop="488dp"
         android:src="@drawable/name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="16:7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintHeight_percent="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.717"
-        app:layout_constraintWidth_percent="0.9" />
+        app:layout_constraintWidth_percent="0.7" />
 
     <ProgressBar
         android:id="@+id/progressBar"
-        android:layout_width="66dp"
-        android:layout_height="66dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.833" />
+        app:layout_constraintTop_toBottomOf="@id/name" />
 
-    <!-- Hide the input and button -->
     <EditText
         android:id="@+id/nameInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="18dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:hint="Enter your name"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/name" />
+        app:layout_constraintTop_toBottomOf="@id/progressBar" />
 
-    <Button
+    <ImageButton
         android:id="@+id/getStartedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/button_round"
-        android:gravity="center"
-        android:paddingStart="20dp"
-        android:paddingTop="0dp"
-        android:paddingEnd="20dp"
-        android:text="Get Started"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
+        android:src="@drawable/button_round"
+        android:background="@null"
+        android:contentDescription="Get Started"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

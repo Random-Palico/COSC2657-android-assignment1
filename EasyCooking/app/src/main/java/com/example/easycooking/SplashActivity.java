@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -27,10 +28,10 @@ public class SplashActivity extends AppCompatActivity {
 
         ProgressBar progressBar = findViewById(R.id.progressBar);
         nameInput = findViewById(R.id.nameInput);
-        Button getStartedButton = findViewById(R.id.getStartedButton);
+        ImageButton getStartedButton = findViewById(R.id.getStartedButton);
 
         new Handler().postDelayed(() -> {
-            // Hide the progress bar and show the input box and button
+            // Hide progress bar and show input box and button
             progressBar.setVisibility(View.GONE);
             nameInput.setVisibility(View.VISIBLE);
             getStartedButton.setVisibility(View.VISIBLE);

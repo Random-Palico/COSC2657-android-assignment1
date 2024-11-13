@@ -3,7 +3,7 @@
     "title": "Egg Tart",
     "imageResource": "egg_tart",
     "time": "1 hr 30 min",
-    "calories": "210 calories / serving",
+    "calories": "210 calories",
     "rating": "5 / 5",
     "about": "One of the most famous Chinese desserts is the classic egg tart, a delicious pastry consisting of a flaky outer shell with a creamy, but firm egg custard in the center. The origin of this traditional Chinese dessert is vague.",
     "ingredients": [
@@ -29,7 +29,7 @@
     "title": "Croissants",
     "imageResource": "croissant",
     "time": "24 hours",
-    "calories": "350 calories / serving (estimate)",
+    "calories": "350 calories",
     "rating": "5 / 5",
     "about": "Croissants are a classic French pastry known for their buttery, flaky layers. Making croissants at home requires patience and technique but results in bakery-quality treats with a rich flavor and light texture.",
     "ingredients": [
@@ -54,7 +54,7 @@
     "title": "Matcha Tiramisu",
     "imageResource": "matcha_tiramisu",
     "time": "4 hr 45 min",
-    "calories": "300 calories / serving (estimate)",
+    "calories": "300 calories",
     "rating": "5 / 5",
     "about": "A twist on a classic tiramisu dessert with creamy matcha mascarpone cream and soft, spongey ladyfingers soaked in matcha for plenty of amazing green tea flavour.",
     "ingredients": [
@@ -81,7 +81,7 @@
     "title": "Panna Cotta",
     "imageResource": "panna_cotta",
     "time": "4 hr 35 min",
-    "calories": "380 calories / serving (estimate)",
+    "calories": "380 calories",
     "rating": "4.8 / 5",
     "about": "Panna cotta is a traditional, easy, and delicious Italian custard. This homemade recipe tastes just like the panna cotta served at Italian restaurants. Serve with warm hot fudge sauce and fresh raspberries on top. It keeps well for several days in the refrigerator.",
     "ingredients": [
@@ -97,7 +97,7 @@
     "title": "Homemade Brownies",
     "imageResource": "brownie",
     "time": "1 hour",
-    "calories": "250 calories / serving (estimate)",
+    "calories": "250 calories",
     "rating": "5 / 5",
     "about": "These homemade brownies are rich, fudgy, and have a gooey texture reminiscent of a boxed mix but with all-natural ingredients. This recipe uses powdered sugar for a chewy consistency and a touch of cornstarch to thicken the batter.",
     "ingredients": [
@@ -118,7 +118,7 @@
     "title": "French Macarons",
     "imageResource": "macarons",
     "time": "2 hours",
-    "calories": "80 calories / macaron",
+    "calories": "80 calories",
     "rating": "4.5 / 5",
     "about": "This easy French macaron recipe makes a batch of the most dainty, delicate, and delicious cookies. Follow these steps for a treat to impress friends and family!",
     "ingredients": [
@@ -138,7 +138,7 @@
     "title": "Vanilla Ice Cream",
     "imageResource": "vanilla_ice_cream",
     "time": "6-8 hours",
-    "calories": "250 calories / serving (estimate)",
+    "calories": "250 calories",
     "rating": "4.8 / 5",
     "about": "This classic vanilla ice cream recipe creates a smooth, creamy dessert infused with real vanilla flavor. It can be made with or without an ice cream machine.",
     "ingredients": [
@@ -155,7 +155,7 @@
     "title": "Classic Cheesecake",
     "imageResource": "cheesecake",
     "time": "8 hours",
-    "calories": "400 calories / slice (estimate)",
+    "calories": "400 calories",
     "rating": "4.8 / 5",
     "about": "This classic cheesecake recipe is creamy and smooth with a buttery graham cracker crust. Perfect for any occasion.",
     "ingredients": [
@@ -179,7 +179,7 @@
     "title": "Chocolate Mousse",
     "imageResource": "chocolate_mousse",
     "time": "6 hours",
-    "calories": "300 calories / serving (estimate)",
+    "calories": "300 calories",
     "rating": "4.9 / 5",
     "about": "This chocolate mousse is rich, creamy, and delicately airy, a perfect dessert for chocolate lovers. Garnished with whipped cream and chocolate shavings, it's an indulgent treat.",
     "ingredients": [

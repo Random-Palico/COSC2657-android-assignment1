@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -33,7 +34,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Recipe eggTartRecipe; // declare recipe the recipe as unique
+    private Recipe eggTartRecipe;
     private EditText searchBox;
     private List<Recipe> allRecipes = new ArrayList<>();
     private List<Recipe> filteredRecipes = new ArrayList<>();
@@ -42,13 +43,16 @@ public class MainActivity extends AppCompatActivity {
     private TextView forYouTitle;
     private LinearLayout recipeListContainer;
 
+    private int currentTopRecipeIndex = 0;
+    private Handler handler = new Handler();
+    private Runnable recipeRotationRunnable;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         initUI();
-
         displayWelcomeMessage();
 
         // Load recipes from JSON file
@@ -62,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         setupSearchFunctionality();
+        startRecipeRotation();
     }
 
     private void initUI() {
@@ -82,12 +87,44 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupTopRecipe() {
-        eggTartRecipe = allRecipes.get(0); // Set first recipe as top recipe
+        currentTopRecipeIndex = 0;
+        eggTartRecipe = allRecipes.get(currentTopRecipeIndex);
         filteredRecipes.addAll(allRecipes);
-        filteredRecipes.remove(0); // Remove top recipe from main list (not displayed in For you list)
+        filteredRecipes.remove(eggTartRecipe);
 
         displayTopRecipe(eggTartRecipe);
         topRecipeCard.setOnClickListener(v -> openRecipeDetail(eggTartRecipe));
+    }
+
+    private void startRecipeRotation() {
+        recipeRotationRunnable = new Runnable() {
+            @Override
+            public void run() {
+                rotateTopRecipe();
+                handler.postDelayed(this, 30000);
+            }
+        };
+        handler.post(recipeRotationRunnable);
+    }
+
+    private void rotateTopRecipe() {
+        if (!filteredRecipes.contains(eggTartRecipe)) {
+            filteredRecipes.add(eggTartRecipe);
+        }
+
+        currentTopRecipeIndex = (currentTopRecipeIndex + 1) % allRecipes.size();
+        eggTartRecipe = allRecipes.get(currentTopRecipeIndex);
+
+        filteredRecipes.remove(eggTartRecipe);
+
+        displayTopRecipe(eggTartRecipe);
+        displayRecipes(filteredRecipes);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacks(recipeRotationRunnable);
     }
 
     private void setupSearchFunctionality() {

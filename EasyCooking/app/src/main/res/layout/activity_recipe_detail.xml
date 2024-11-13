@@ -3,17 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
-    android:padding="0dp">
+    android:background="@android:color/white">
 
     <LinearLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-        <!-- Recipe image -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="280dp"
@@ -32,25 +30,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round_background"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="24dp">
 
             <!-- Recipe title -->
             <TextView
                 android:id="@+id/recipe_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
+                android:gravity="center"
                 android:textColor="@android:color/black"
-                android:textSize="24sp"
+                android:textSize="26sp"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -63,6 +62,7 @@
                     android:id="@+id/recipe_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:textColor="@android:color/darker_gray"
                     android:textSize="16sp" />
 
@@ -70,10 +70,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:text=" | "
-                    android:textColor="@android:color/darker_gray" />
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:text="|"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="16sp" />
 
                 <ImageView
                     android:layout_width="20dp"
@@ -85,6 +86,7 @@
                     android:id="@+id/recipe_calories"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:textColor="@android:color/darker_gray"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -93,7 +95,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
                 android:text="About"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
@@ -104,6 +107,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
@@ -111,7 +116,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
                 android:text="Ingredients"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
@@ -122,14 +128,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
-            <!-- Steps section -->
+            <!-- Recipe steps section -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
                 android:text="Recipe"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
@@ -140,15 +148,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
+            <!--header -->
             <TextView
                 android:id="@+id/check_out_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
+                android:gravity="center"
                 android:text="Check out for more"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
@@ -156,10 +166,10 @@
 
             <LinearLayout
                 android:id="@+id/more_links"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:orientation="vertical"></LinearLayout>
         </LinearLayout>
     </LinearLayout>
