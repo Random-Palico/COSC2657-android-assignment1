@@ -33,7 +33,7 @@ The app begins with an animated splash screen welcoming the user. After a brief 
 
 #### 2. Main Screen
 The main screen serves as the hub for browsing and searching dessert recipes. Key features include:
-   - **Top Recipe of the Week**: A featured recipe is highlighted at the top of the screen. This recipe rotates every 30 seconds, allowing users to discover new recipes over time.
+   - **Top Recipe of the Week**: A featured recipe is highlighted at the top of the screen. This recipe rotates every 20 seconds, allowing users to discover new recipes over time.
    - **For You Section**: A list of recommended dessert recipes is displayed below the top recipe.
    - **Search Functionality**: Users can search for specific recipes by typing in keywords, which filters the results in real-time.
 
