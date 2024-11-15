@@ -9,59 +9,59 @@
         android:id="@+id/welcome_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center"
         android:layout_gravity="center_horizontal"
-        android:paddingBottom="10dp" />
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
         android:text="This app is a recipe app focused on desserts."
-        android:paddingBottom="10dp"
-        android:textSize="16sp" />
+        android:textSize="16dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Main Features:"
-        android:textStyle="bold"
         android:paddingBottom="8dp"
-        android:textSize="16sp" />
+        android:text="Main Features:"
+        android:textSize="16dp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingBottom="4dp"
         android:text="• Top recipe of the week displayed at the top of the screen."
-        android:paddingBottom="4dp"
-        android:textSize="14sp" />
+        android:textSize="14dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingBottom="4dp"
         android:text="• For You section with recommended recipes."
-        android:paddingBottom="4dp"
-        android:textSize="14sp" />
+        android:textSize="14dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingBottom="4dp"
         android:text="• Search box to find your favorite recipe."
-        android:paddingBottom="4dp"
-        android:textSize="14sp" />
+        android:textSize="14dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="• Recipe rotation feature to automatically update the top recipe every 20 seconds."
         android:paddingBottom="10dp"
-        android:textSize="14sp" />
+        android:text="• Recipe rotation feature to automatically update the top recipe every 20 seconds."
+        android:textSize="14dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tap on any recipe to view its details, and use 'Check out for more' to explore more recipes online."
-        android:textSize="14sp" />
+        android:textSize="14dp" />
 
 </LinearLayout>
