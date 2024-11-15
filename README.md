@@ -1,6 +1,6 @@
 # Easy Cooking
 
-**Welcome to *Easy Cooking*, an Android app designed to provide simple dessert recipes with an engaging user experience.** This README will guide you through setting up the app on your device and provide an overview of its main features and functionality.
+**Welcome to *Easy Cooking*, an Android app designed to provide simple dessert recipes.** This README will guide you through setting up the app on your device and provide an overview of its main features and functionality.
 
 ## Getting Started
 
