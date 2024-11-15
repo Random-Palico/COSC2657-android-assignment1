@@ -83,9 +83,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
         linkButton.setPadding(0, 16, 0, 16);
         linkButton.setGravity(View.TEXT_ALIGNMENT_CENTER);
 
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         params.gravity = Gravity.CENTER_HORIZONTAL;
         linkButton.setLayoutParams(params);
 
