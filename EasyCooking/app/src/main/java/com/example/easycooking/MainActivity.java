@@ -16,8 +16,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.easycooking.model.Recipe;
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initUI();
-        displayWelcomeMessage();
+        showIntroductionModal();
 
         // Load recipes from JSON file
         allRecipes = loadRecipesFromJson();
@@ -61,8 +61,6 @@ public class MainActivity extends AppCompatActivity {
         if (!allRecipes.isEmpty()) {
             setupTopRecipe();
             displayRecipes(filteredRecipes);
-        } else {
-            Toast.makeText(this, "Failed to load recipe data", Toast.LENGTH_SHORT).show();
         }
 
         setupSearchFunctionality();
@@ -77,13 +75,22 @@ public class MainActivity extends AppCompatActivity {
         recipeListContainer = findViewById(R.id.recipe_card_horizontal);
     }
 
-    private void displayWelcomeMessage() {
+    private void showIntroductionModal() {
+        // Retrieve user's name from intent
         String userName = getIntent().getStringExtra("USER_NAME");
-        if (userName != null && !userName.isEmpty()) {
-            Toast toast = Toast.makeText(this, "Welcome " + userName, Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 100);
-            toast.show();
-        }
+
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.modal_dialogue, null);
+
+        TextView welcomeMessage = dialogView.findViewById(R.id.welcome_message);
+        welcomeMessage.setText("Welcome " + userName + "!");
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(dialogView)
+                .setCancelable(false)
+                .setPositiveButton("Got it", (dialog, id) -> dialog.dismiss());
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void setupTopRecipe() {
@@ -101,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 rotateTopRecipe();
-                handler.postDelayed(this, 30000);
+                handler.postDelayed(this, 20000);
             }
         };
         handler.post(recipeRotationRunnable);
